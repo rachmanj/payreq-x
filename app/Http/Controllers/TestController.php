@@ -24,8 +24,8 @@ class TestController extends Controller
         // $test = app(BucSyncController::class)->cek_rab_id();
         // $test = app(Reports\LoanController::class)->dashboard_data();
         // $test = app(Reports\OngoingDashboardController::class)->dashboard_data('000H');
-        // $test = app(Reports\OngoingDashboardController::class)->ongoing_documents_by_user('000H');
         $test = app(Reports\OngoingDashboardController::class)->ongoing_documents_by_user('000H');
+        // $test = app(Reports\OngoingDashboardController::class)->ongoing_documents_by_user('000H');
 
 
         // $realizations = Realization::where('flag', 'VJTEMP' . auth()->user()->id)
