@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ApprovalStage::class, 'approver_id', 'id');
     }
+
+    public function payreqs()
+    {
+        return $this->hasMany(Payreq::class, 'user_id', 'id');
+    }
 }
