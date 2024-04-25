@@ -12,6 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('rabs/get-payreqs', [BucSyncController::class, 'get_buc_payreqs'])->name('get_buc_payreqs');
 
 Route::prefix('migrasi')->name('migrasi.')->group(function () {
-    Route::get('/', [MigrasiController::class, 'index'])->name('index');
+    Route::get('/payreqs', [MigrasiController::class, 'payreqs'])->name('payreqs');
+    Route::get('/realizations', [MigrasiController::class, 'realizations'])->name('realizations');
     Route::get('/departments', [MigrasiController::class, 'departments'])->name('departments');
 });

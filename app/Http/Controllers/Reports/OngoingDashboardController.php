@@ -126,7 +126,7 @@ class OngoingDashboardController extends Controller
         $project = $this->get_projects($project);
 
         $users = User::join('departments', 'users.department_id', '=', 'departments.id')
-            ->where('project', $project)
+            ->whereIn('project', $project)
             ->select('users.name', 'users.id', 'users.project', 'departments.department_name')
             ->orderBy('users.name', 'asc')
             ->get();

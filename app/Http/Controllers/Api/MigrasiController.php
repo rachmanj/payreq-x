@@ -15,7 +15,7 @@ class MigrasiController extends Controller
     public function index()
     {
         $migrasi_data = $this->migrasiData();
-
+        // $migrasi_data = "ninja";
         return response()->json([
             'migrasi_data' => $migrasi_data
         ]);
@@ -50,23 +50,24 @@ class MigrasiController extends Controller
         return $usersIds;
     }
 
-    public function payreqs()
+    public function getPayreqIds()
     {
         // only payreqs that belong to users with id in $usersIds
         $userIds = $this->getUserIds();
         $payreqs = Payreq::whereIn('user_id', $userIds)
             ->get();
 
-        return $payreqs;
+        return $payreqs->pluck('id')->toArray();
     }
 
     public function realizations()
     {
-        $payreqIds = $this->payreqs()->pluck('id')->toArray();
-        $realizations = Realization::whereIn('payreq_id', $payreqIds)
+        $realizations = Realization::whereIn('payreq_id', $this->getPayreqIds())
             ->get();
 
-        return $realizations;
+        return response()->json([
+            'realizations' => $realizations
+        ]);
     }
 
     public function realizationDetails()
